@@ -19,7 +19,7 @@ xmin =-10
 xmax =10
 v = [xmin, xmax, ymin, ymax]
 
-slopes = np.linspace(-4,4,15)　#パラメータを動かす範囲と回数
+slopes = np.linspace(-4,4,15)#パラメータを動かす範囲と回数
 for slope in slopes:
     y = f(x, t=slope)
     plot(x, y, 'b-')
