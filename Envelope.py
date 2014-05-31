@@ -1,1 +1,39 @@
-import matplotlib.pyplot as pltimport numpy as npdef f(x, t):    return t * x - t**2def subplots():    "Custom subplots with axes throught the origin"    fig, ax = plt.subplots()    # Set the axes through the origin    for spine in ['left', 'bottom']:        ax.spines[spine].set_position('zero')    for spine in ['right', 'top']:        ax.spines[spine].set_color('none')        ax.grid()    return (fig, ax)fig, ax = subplots()  # Call the local version, not plt.subplots()x = np.linspace(-2, 10, 200)#for i in range(n)y = f(x, t=1)ax.plot(x, y, 'r-', linewidth=2, label='sine function', alpha=0.6)ax.legend(loc='lower right')plt.show()
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <codecell>
+
+import matplotlib.pyplot as plt
+
+# 包絡線の式
+def f(x, t):
+    return t * x - t**2
+
+# xの定義域を設定
+x = linspace(-50,50,1000)
+
+# x,yの表示範囲を設定
+ymin =-15
+ymax =20
+xmin =-10
+xmax =10
+v = [xmin, xmax, ymin, ymax]
+
+slopes = np.linspace(-4,4,15)　#パラメータを動かす範囲と回数
+for slope in slopes:
+    y = f(x, t=slope)
+    plot(x, y, 'b-')
+axis(v)
+axvline(linewidth=2, color='k') #x軸の設定
+axhline(linewidth=2, color='k') #y軸の設定
+plt.show()
+
+# <codecell>
+
+
+# <codecell>
+
+
+# <codecell>
+
+
