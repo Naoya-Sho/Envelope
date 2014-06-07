@@ -37,7 +37,7 @@ xmin =-10
 xmax =10
 v = [xmin, xmax, ymin, ymax]
 
-switch = 1 #　包絡線の本数を設定 
+switch = 0 #　包絡線の本数を設定 
 
 if switch == 0:
 	slopes = np.linspace(-4,4,15)#パラメータを動かす範囲と回数
@@ -51,5 +51,5 @@ plt.axis(v)
 plt.axvline(linewidth=2, color='k') #x軸の設定
 plt.axhline(linewidth=2, color='k') #y軸の設定
 for FORMAT in ['.png', '.pdf']:
-	plt.savefig('envelop'+ str(switch) +FORMAT,transparent=True, bbox_inches='tight', pad_inches=0)
+	plt.savefig('envelope'+ str(switch) +FORMAT,transparent=True, bbox_inches='tight', pad_inches=0)
 plt.close()
