@@ -6,32 +6,50 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# åŒ…çµ¡ç·šã®å¼
+# •ï—ü‚Ì®
 def f(x, t):
     return t * x - t**2
 
-# xã®å®šç¾©åŸŸã‚’è¨­å®š
+#ƒOƒ‰ƒt‚Ì²‚È‚Ç‚Ìİ’è
+def subplots():
+    fig, ax = plt.subplots()
+
+    for spine in ['left', 'bottom']:
+        ax.spines[spine].set_position('zero')
+        
+    for spine in ['right', 'top']:
+        ax.spines[spine].set_color('none') 
+
+    ax.set_xticks([])
+    ax.set_yticks([]) 
+    
+    return (fig, ax)
+
+fig, ax = subplots() 
+
+# x‚Ì’è‹`ˆæ‚ğİ’è
 x = np.linspace(-50,50,1000)
 
-# x,yã®è¡¨ç¤ºç¯„å›²ã‚’è¨­å®š
+# x,y‚Ì•\¦”ÍˆÍ‚ğİ’è
 ymin =-15
 ymax =20
 xmin =-10
 xmax =10
 v = [xmin, xmax, ymin, ymax]
 
-slopes = np.linspace(-4,4,15)#ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å‹•ã‹ã™ç¯„å›²ã¨å›æ•°
+switch = 1 #@•ï—ü‚Ì–{”‚ğİ’è 
+
+if switch == 0:
+	slopes = np.linspace(-4,4,15)#ƒpƒ‰ƒ[ƒ^‚ğ“®‚©‚·”ÍˆÍ‚Æ‰ñ”
+if switch == 1:
+	slopes = np.linspace(-5,5,30)
+
 for slope in slopes:
     y = f(x, t=slope)
-    plt.plot(x, y, 'b-')
+    plt.plot(x, y, 'k-')
 plt.axis(v)
-plt.axvline(linewidth=2, color='k') #xè»¸ã®è¨­å®š
-plt.axhline(linewidth=2, color='k') #yè»¸ã®è¨­å®š
-plt.show()
-
-# <codecell>
-
-
-# <codecell>
-
-
+plt.axvline(linewidth=2, color='k') #x²‚Ìİ’è
+plt.axhline(linewidth=2, color='k') #y²‚Ìİ’è
+for FORMAT in ['.png', '.pdf']:
+	plt.savefig('envelop'+ str(switch) +FORMAT,transparent=True, bbox_inches='tight', pad_inches=0)
+plt.close()
